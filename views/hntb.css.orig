@@ -1,0 +1,65 @@
+div.topbar {
+height: 70px;
+}
+.topbar-inner, body div.topbar div.fill {
+    color:#ff9900;
+    background-color:#ff9900;
+    background-repeat: repeat-x;
+    background-repeat: repeat-x;
+    background-ima0 0 0 0ge: -khtml-gradient(linear, left top, left bottom, from(#ff9900), to(#ff8c00));
+    background-image: -moz-linear-gradient(top, #ff9900, #ff8c00);
+    background-image: -ms-linear-gradient(top, #ff9900, #ff8c00);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff9900), color-stop(100%, #ff8c00));
+    background-image: -webkit-linear-gradient(top, #ff9900, #ff8c00);
+    background-image: -o-linear-gradient(top, #ff9900, #ff8c00);
+    background-image: linear-gradient(top, #ff9900, #ff8c00);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9900', endColorstr='#ff8c00', GradientType=0);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+div.topbar div.hntb div.container a.brand{
+    padding-top: 13px;
+    font-size: 25px; 
+    font-color: #eeeeee;
+    font-weight: 700;
+    text-shadow: 0 1px 1px #222222;
+}
+div.topbar div.hntb div.container a.brand:hover {
+    background-color:#ff8300;
+}
+
+div.topbar div.hntb div.container ul.nav li a{
+    padding: 18px 6px 12px 6px;
+    margin: 0 15px 0 15px;
+    font-size: 22px;
+    text-shadow: 0 0px;
+    font-weight: 500;
+    color:#eeeeee;
+    height:20px;
+    text-shadow: 0 1px 1px #333333;
+    width: 90px;
+    text-align: center;
+}
+
+div.topbar div.hntb div.container ul.nav .active a{
+    background-color:#ff8300;
+    color:#eeeeee;
+    font-weight: 600;
+    text-shadow: 0 1px 2px #222222;
+    width: 100px;
+}
+div.topbar div.hntb div.container ul.nav li a:hover {
+    background-color:#ff8300;
+    text-shadow: 0 1px 2px #222222;
+    color:#ffffff;
+}
+div.topbar div.fill{
+    border-color:#ff8300;
+    border-width:0 0 2px;
+    border-style:solid;
+}
+div.container div.span16 img.coverimage {
+    float: left; 
+    margin-right: 15px;
+}

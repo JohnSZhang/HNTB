@@ -1,0 +1,10 @@
+<footer class="footer">
+<div class="container">
+<p>
+Designed and built by John Zhang &copy; 2012 </br>
+Powered by CodeIgniter and Twitter Bootstrap
+<p>
+</div>
+</footer>
+</body>
+</html>

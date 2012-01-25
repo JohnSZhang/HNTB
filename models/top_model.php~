@@ -1,0 +1,58 @@
+<?php 
+
+class Top_model extends CI_Model
+{
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+    //select all books in the toplists table
+    public function topList()
+    {
+       return $this->db->get('toplist')->result_array();
+    }
+    public function updateMedia($asin, $medimageurl, $largeimageurl, $description)
+    {
+        $this->db->where('asin', $asin)
+            ->set('medimage', $medimageurl)
+            ->set('largeimage', $largeimageurl)
+            ->set('description', $description);
+        $this->db->update('toplist');
+    }
+    public function getTopList($start, $end)
+    {
+       $this->db->order_by("authorresult", "desc");
+       $this->db->order_by("asinresult", "desc");
+       $this->db->order_by('name', "asc");
+       $this->db->limit($end-($start-1),$start-1);
+       return $this->db->get('toplist')->result_array();
+    }
+    public function getBookInfo($asin)
+    {
+        $this->db->where('asin', $asin);
+        return $this->db->get('books')->result_array();
+    }
+    public function getTopListInfo($asin)
+    {
+        $this->db->where('asin', $asin);
+        return $this->db->get('toplist')->result_array();
+    }
+    public function getCategories($nodes)
+    {
+        $categories = array();
+        $nodearray = explode(',', $nodes);
+        for($i=0;$i<count($nodearray);$i++)
+        {
+            $node = $this->db->where('amazon_id', $nodearray[$i])
+                    ->get('nodes')->result_array();
+            $categories[$i]['name']=$node[0]['name'];
+            $categories[$i]['id']=$node[0]['amazon_id'];
+
+
+        }
+        return $categories;
+    }
+
+} 

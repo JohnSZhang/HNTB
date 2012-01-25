@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <?php $this->load->helper('url');?>
+<?php if(!isset($activeheader))
+{$activeheader=0;}?>
+<html lang="en"
+itemscope itemtype="http://schema.org/site">
+<head>
+<meta charset="utf-8">
+<title>HN TopBooks, Most Often Mentioned Books on Hacker News</title>
+<link rel="canonical" href="http://hn-topbooks.com/"/> 
+<meta name="description" content="Find the books most often mentioned on Hacker News, get your startup to the next level">
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script type="text/javascript">
+(function() {
+ var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+ po.src = 'https://apis.google.com/js/plusone.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+ })();
+</script>
+
+<link href="<?php echo base_url("/application/views/bootstrap.css");?>" rel="stylesheet">
+<link href="<?php echo base_url("/application/views/hntb.css");?>" rel="stylesheet">
+<script type="text/javascript" src="<?php echo base_url('/application/js/bootstrap-dropdown.js');?>"></script>
+</head>
+<body>
+
+<div class="topbar" data-dropdown="dropdown">
+<div class="fill hntb">
+<div class="container">
+<a class="brand" href="<?php echo base_url('index.php/home');?>">HN-TopBooks</a>
+<ul class="nav">
+<li <?php if($activeheader=='1-50')
+{echo 'class="active"';}?>>
+<a href="<?php echo base_url('index.php/top/topbooks/1/50');?>">Top 50</a></li>
+<li <?php if($activeheader=='51-100')
+{echo 'class="active"';}?>>
+<a href="<?php echo base_url('index.php/top/topbooks/51/100');?>">51-100</a></li>
+<li class="dropdown <?php if($activeheader=='100+')
+{echo 'class="active"';}?>">
+<a class="dropdown-toggle" href="#">100+</a>
+<ul class="dropdown-menu">
+<li><a class="more list" href="<?php echo base_url('index.php/top/topbooks/101/200');?>">101-200</a><li>
+<li><a class="more list" href="<?php echo base_url('index.php/top/topbooks/201/300');?>">201-300</a><li>
+<li><a class="more list" href="<?php echo base_url('index.php/top/topbooks/301/400');?>">301-400</a><li>
+<li><a class="more list" href="<?php echo base_url('index.php/top/topbooks/401/500');?>">401-500</a><li>
+</ul>
+</li>
+<li <?php if($activeheader=='topic')
+{echo 'class="active"';}?>><a href="<?php echo base_url('index.php/topics/all');?>">Topics</a></li>
+<li <?php if($activeheader=='faq')
+{echo 'class="active"';}?>><a href="<?php echo base_url('index.php/faq');?>">FAQ</a></li>
+
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.hntopbooks.com" data-via="">Tweet</a>
+</div> 
+<div class="fb-like" data-href="http://www.hntopbooks.com" data-send="false" data-layout="button_count" data-width="25" data-show-faces="true">
+</div>
+<div class="googleplus">
+<g:plusone size="medium" annotation="inline" width="120"></g:plusone>
+</div>
+</div>
+<?php if(isset($homepage) AND $homepage==1){echo'
+    <div class="container welcome">
+        <pre>
+        <h2>Welcome to HN-TopBooks, a list of the most often mentioned books on Hacker News. </h2>
+        <p>Click on the FAQ button to learn more about HN-TopBooks and how the books are sourced and ranked. 
+        Go to the topics page to browse by the most popular books by category. 
+        Or simply scroll down to check out the top 50 list!
+        Any questions, comments, or suggestions please email me at <a href="mailto:john@hn-topbooks.com">John@HN-TopBooks.com</a>.
+        If you like the site please buy a top book using one of the Amazon Affiliate links on the book page. Thank you!</p></pre>
+        </div>';}?>

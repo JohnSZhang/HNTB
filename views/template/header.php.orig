@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<?php $this->load->helper('url');?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HN Top Books, best books according to Hacker News</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <link href="<?php echo base_url("/application/views/bootstrap.css");?>" rel="stylesheet">
+    <link href="<?php echo base_url("/application/views/hntb.css");?>" rel="stylesheet">
+  <script type="text/javascript" src="<?php echo base_url('/application/js/bootstrap-dropdown.js');?>"></script>
+</head>
+ <body>
+
+ <div class="topbar" data-dropdown="dropdown">
+   <div class="fill hntb">
+     <div class="container">
+       <a class="brand" href="<?php echo base_url('index.php/top/topbooks/1/50');?>">HN-TopBooks</a>
+       <ul class="nav">
+         <li class="active"><a href="<?php echo base_url('index.php/top/topbooks/1/50');?>">Top 50</a></li>
+         <li><a href="<?php echo base_url('index.php/top/topbooks/51/100');?>">51-100</a></li>
+         <li class="dropdown">
+            <a class="dropdown-toggle" href="#">100+</a>
+            <ul class="dropdown-menu">
+                <li><a href="<?php echo base_url('index.php/top/topbooks/101/200');?>">101-200</a><li>
+                <li><a href="<?php echo base_url('index.php/top/topbooks/201/300');?>">201-300</a><li>
+                <li><a href="<?php echo base_url('index.php/top/topbooks/301/400');?>">301-400</a><li>
+                <li><a href="<?php echo base_url('index.php/top/topbooks/401/500');?>">401-500</a><li>
+            </ul>
+        </li>
+        <li><a href="#">Tags</a></li>
+       </ul>
+     </div>
+   </div>
+ </div>
+

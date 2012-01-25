@@ -1,0 +1,129 @@
+<?php
+/**
+* The Node model class is used to search, add and remove nodes(topics)
+* in the node table.
+*/
+class Node extends CI_Model{
+    /**
+    * constructor that calls the CI database library
+    */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+    /**
+    * Addnode functions that adds a new node to the node table
+    *
+    * @param int $id node id
+    * @param string $name amazon name of the topic
+    */
+    public function addNode($id,$name)
+    {        
+        $data=array("amazon_id"=>$id,
+                "name"=>mysql_real_escape_string($name));
+        return $this->db->insert('nodes',$data);
+    }
+    
+    /**
+    * addnode method to select all nodes from the table
+    */
+    public function allNodes()
+    {        
+        $this->db->order_by("numtoplist", "desc");
+        return $this->db->get('nodes')->result_array();
+    }
+    /**
+    * nodeexist function that checks to see if a given node exists
+    *
+    * @param int $id amazon id of the node
+    * @return bool true of false
+    */
+    public function nodeExist($id, $name="")
+    {
+        if($id==0)
+        {
+            $query = $this->db->query("SELECT * FROM nodes WHERE name = '".mysql_real_escape_string($name)."'");
+            $row = $query->num_rows();
+            if ($row==0)
+            {
+                return FALSE;
+            }
+            else
+            {
+                return TRUE;
+            }
+
+        }
+        else
+        {
+            $query = $this->db->query("SELECT * FROM nodes WHERE amazon_id = '".$id."'");
+            $row = $query->num_rows();
+            if ($row==0)
+            {
+                return FALSE;
+            }
+            else
+            {
+                return TRUE;
+            }
+        }
+    }
+    /** 
+    * A quick function to get all books in the toplist table 
+    */
+    public function topList()
+    {
+        return $this->db->get('toplist')->result_array();
+    }
+    /**
+    * A book node function to search for the book nodes of a given book in books
+    *
+    * @param int $asin the asin of the book in search
+    * @return array $query if exist, else returns faluse
+    */
+    public function bookNodes($asin)
+    {
+        $query = $this->db->query("SELECT nodes FROM books WHERE asin = '".$asin."'");
+        $row = $query->num_rows();
+        if ($row==0)
+        {
+            return FALSE;
+        }
+        else
+        {
+            return $query->result_array();
+        }
+    }
+    /**
+    * A function to clear the entire node table for a nodeupdate
+    */
+    public function clearTable()
+    {
+        $this->db->empty_table('nodes');
+    }
+    /**
+    * Nodecount method that adds one to the total number of 
+    * books for a node
+    * 
+    * @param int $nodenum the number of the topic
+    */
+    public function nodeCount($nodenum)
+    {
+            $node = $this->db->where('amazon_id',$nodenum)
+                ->get('nodes')->result_array();
+            $node[0]['numtoplist']++;
+            $this->db->where('amazon_id',$nodenum)
+                ->update('nodes',$node[0]);
+    }
+    /**
+    * a basic removenode method to remove a topic
+    * 
+    * @deprecated with the use of clear table when updating
+    * @param int $id amazon id of the node
+    */
+    public function removeNode($id)
+    {        
+        $this->db->delete('nodes',array("amazon_id"=>$id));
+    }
+}
